@@ -1,0 +1,82 @@
+  0%|                                                                                                                                                                                                                                                    | 0/10 [00:00<?, ?it/s]/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Traceback (most recent call last):
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 206, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 195, in train
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4071, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/accelerator.py", line 2844, in backward
+    self.deepspeed_engine_wrapped.backward(loss, sync_gradients=self.sync_gradients, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 281, in backward
+    self.engine.step()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2690, in step
+    self._take_model_step(lr_kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2585, in _take_model_step
+    self.optimizer.step()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 2217, in step
+    self._optimizer_step(sub_group_id)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 1078, in _optimizer_step
+    step_with_gradscaler(self.optimizer)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 1062, in step_with_gradscaler
+    optimizer.step()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/lr_scheduler.py", line 133, in wrapper
+    return func.__get__(opt, opt.__class__)(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/optimizer.py", line 516, in wrapper
+    out = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/optimizer.py", line 81, in _use_grad
+    ret = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/adam.py", line 237, in step
+    has_complex = self._init_group(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+    return fn(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/adam.py", line 181, in _init_group
+    state["exp_avg_sq"] = torch.zeros_like(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.75 GiB. GPU 0 has a total capacity of 44.39 GiB of which 1.14 GiB is free. Including non-PyTorch memory, this process has 43.24 GiB memory in use. Of the allocated memory 38.73 GiB is allocated by PyTorch, and 3.73 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 206, in <module>
+[rank0]:     train(attn_implementation="flash_attention_2")
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 195, in train
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4071, in training_step
+[rank0]:     self.accelerator.backward(loss, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/accelerator.py", line 2844, in backward
+[rank0]:     self.deepspeed_engine_wrapped.backward(loss, sync_gradients=self.sync_gradients, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 281, in backward
+[rank0]:     self.engine.step()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2690, in step
+[rank0]:     self._take_model_step(lr_kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2585, in _take_model_step
+[rank0]:     self.optimizer.step()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 2217, in step
+[rank0]:     self._optimizer_step(sub_group_id)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 1078, in _optimizer_step
+[rank0]:     step_with_gradscaler(self.optimizer)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 1062, in step_with_gradscaler
+[rank0]:     optimizer.step()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/lr_scheduler.py", line 133, in wrapper
+[rank0]:     return func.__get__(opt, opt.__class__)(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/optimizer.py", line 516, in wrapper
+[rank0]:     out = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/optimizer.py", line 81, in _use_grad
+[rank0]:     ret = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/adam.py", line 237, in step
+[rank0]:     has_complex = self._init_group(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/optim/adam.py", line 181, in _init_group
+[rank0]:     state["exp_avg_sq"] = torch.zeros_like(
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.75 GiB. GPU 0 has a total capacity of 44.39 GiB of which 1.14 GiB is free. Including non-PyTorch memory, this process has 43.24 GiB memory in use. Of the allocated memory 38.73 GiB is allocated by PyTorch, and 3.73 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

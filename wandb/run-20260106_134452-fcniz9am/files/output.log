@@ -1,0 +1,159 @@
+  0%|                                                                                                                                                                                                                                                                                                                                                                                 | 0/10 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 206, in <module>
+    train(attn_implementation="flash_attention_2")
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 195, in train
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2618, in _inner_training_loop
+    batch_samples, num_items_in_batch = self.get_batch_samples(epoch_iterator, num_batches, args.device)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 5654, in get_batch_samples
+    batch_samples.append(next(epoch_iterator))
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/data_loader.py", line 567, in __iter__
+    current_batch = next(dataloader_iter)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1516, in _next_data
+    return self._process_data(data, worker_id)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1551, in _process_data
+    data.reraise()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_utils.py", line 769, in reraise
+    raise exception
+ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_utils.py", line 480, in load_image
+    b64 = base64.decodebytes(image.encode())
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/base64.py", line 562, in decodebytes
+    return binascii.a2b_base64(s)
+binascii.Error: Invalid base64-encoded string: number of data characters (73) cannot be 1 more than a multiple of 4
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 388, in __getitem__
+    raise e
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 385, in __getitem__
+    sample = self.item_fn(sources)
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 391, in _get_item
+    data_dict = preprocess_qwen_visual(
+  File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 213, in preprocess_qwen_visual
+    full_result = processor.apply_chat_template(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/processing_utils.py", line 1705, in apply_chat_template
+    out = self(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/processing_qwen3_vl.py", line 163, in __call__
+    image_inputs = self.image_processor(images=images, **output_kwargs["images_kwargs"])
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 732, in __call__
+    return self.preprocess(images, *args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl_fast.py", line 141, in preprocess
+    return super().preprocess(images, videos, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 757, in preprocess
+    return self._preprocess_image_like_inputs(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl_fast.py", line 160, in _preprocess_image_like_inputs
+    images = self._prepare_image_like_inputs(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 633, in _prepare_image_like_inputs
+    images = self._prepare_images_structure(images, expected_ndims=expected_ndims)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 564, in _prepare_images_structure
+    images = self.fetch_images(images)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in fetch_images
+    return [self.fetch_images(x) for x in image_url_or_urls]
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in <listcomp>
+    return [self.fetch_images(x) for x in image_url_or_urls]
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in fetch_images
+    return [self.fetch_images(x) for x in image_url_or_urls]
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in <listcomp>
+    return [self.fetch_images(x) for x in image_url_or_urls]
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 532, in fetch_images
+    return load_image(image_url_or_urls)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_utils.py", line 483, in load_image
+    raise ValueError(
+ValueError: Incorrect image source. Must be a valid URL starting with `http://` or `https://`, a valid path to an image file, or a base64 encoded string. Got /mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/demo/images/demo/images/10149.png. Failed with Invalid base64-encoded string: number of data characters (73) cannot be 1 more than a multiple of 4
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 206, in <module>
+[rank0]:     train(attn_implementation="flash_attention_2")
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py", line 195, in train
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2618, in _inner_training_loop
+[rank0]:     batch_samples, num_items_in_batch = self.get_batch_samples(epoch_iterator, num_batches, args.device)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 5654, in get_batch_samples
+[rank0]:     batch_samples.append(next(epoch_iterator))
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/data_loader.py", line 567, in __iter__
+[rank0]:     current_batch = next(dataloader_iter)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1516, in _next_data
+[rank0]:     return self._process_data(data, worker_id)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1551, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_utils.py", line 769, in reraise
+[rank0]:     raise exception
+[rank0]: ValueError: Caught ValueError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_utils.py", line 480, in load_image
+[rank0]:     b64 = base64.decodebytes(image.encode())
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/base64.py", line 562, in decodebytes
+[rank0]:     return binascii.a2b_base64(s)
+[rank0]: binascii.Error: Invalid base64-encoded string: number of data characters (73) cannot be 1 more than a multiple of 4
+
+[rank0]: During handling of the above exception, another exception occurred:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 388, in __getitem__
+[rank0]:     raise e
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 385, in __getitem__
+[rank0]:     sample = self.item_fn(sources)
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 391, in _get_item
+[rank0]:     data_dict = preprocess_qwen_visual(
+[rank0]:   File "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/qwenvl/data/data_processor.py", line 213, in preprocess_qwen_visual
+[rank0]:     full_result = processor.apply_chat_template(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/processing_utils.py", line 1705, in apply_chat_template
+[rank0]:     out = self(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/processing_qwen3_vl.py", line 163, in __call__
+[rank0]:     image_inputs = self.image_processor(images=images, **output_kwargs["images_kwargs"])
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 732, in __call__
+[rank0]:     return self.preprocess(images, *args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl_fast.py", line 141, in preprocess
+[rank0]:     return super().preprocess(images, videos, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 757, in preprocess
+[rank0]:     return self._preprocess_image_like_inputs(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl_fast.py", line 160, in _preprocess_image_like_inputs
+[rank0]:     images = self._prepare_image_like_inputs(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 633, in _prepare_image_like_inputs
+[rank0]:     images = self._prepare_images_structure(images, expected_ndims=expected_ndims)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_utils_fast.py", line 564, in _prepare_images_structure
+[rank0]:     images = self.fetch_images(images)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in fetch_images
+[rank0]:     return [self.fetch_images(x) for x in image_url_or_urls]
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in <listcomp>
+[rank0]:     return [self.fetch_images(x) for x in image_url_or_urls]
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in fetch_images
+[rank0]:     return [self.fetch_images(x) for x in image_url_or_urls]
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 530, in <listcomp>
+[rank0]:     return [self.fetch_images(x) for x in image_url_or_urls]
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_processing_base.py", line 532, in fetch_images
+[rank0]:     return load_image(image_url_or_urls)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/image_utils.py", line 483, in load_image
+[rank0]:     raise ValueError(
+[rank0]: ValueError: Incorrect image source. Must be a valid URL starting with `http://` or `https://`, a valid path to an image file, or a base64 encoded string. Got /mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/demo/images/demo/images/10149.png. Failed with Invalid base64-encoded string: number of data characters (73) cannot be 1 more than a multiple of 4

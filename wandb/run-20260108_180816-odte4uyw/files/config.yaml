@@ -1,0 +1,816 @@
+_name_or_path:
+    value: Qwen/Qwen3-VL-8B-Instruct
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            s8trghyi194tgup319tqqth8ekjypvvt:
+                args:
+                    - --model_name_or_path
+                    - Qwen/Qwen3-VL-8B-Instruct
+                    - --dataset_use
+                    - chartqa
+                    - --data_flatten
+                    - "True"
+                    - --tune_mm_vision
+                    - "False"
+                    - --tune_mm_mlp
+                    - "True"
+                    - --tune_mm_llm
+                    - "True"
+                    - --bf16
+                    - --output_dir
+                    - ./output
+                    - --num_train_epochs
+                    - "1"
+                    - --per_device_train_batch_size
+                    - "4"
+                    - --per_device_eval_batch_size
+                    - "8"
+                    - --gradient_accumulation_steps
+                    - "4"
+                    - --max_pixels
+                    - "50176"
+                    - --min_pixels
+                    - "784"
+                    - --eval_strategy
+                    - "no"
+                    - --save_strategy
+                    - steps
+                    - --save_steps
+                    - "1000"
+                    - --save_total_limit
+                    - "1"
+                    - --learning_rate
+                    - "1e-4"
+                    - --weight_decay
+                    - "0"
+                    - --warmup_ratio
+                    - "0.03"
+                    - --max_grad_norm
+                    - "1"
+                    - --lr_scheduler_type
+                    - cosine
+                    - --logging_steps
+                    - "1"
+                    - --model_max_length
+                    - "8192"
+                    - --gradient_checkpointing
+                    - "False"
+                    - --dataloader_num_workers
+                    - "4"
+                    - --run_name
+                    - qwen3vl-chartqa-test
+                    - --lora_enable
+                    - "True"
+                    - --lora_r
+                    - "8"
+                    - --lora_alpha
+                    - "16"
+                    - --lora_dropout
+                    - "0.0"
+                    - --report_to
+                    - wandb
+                codePath: qwen-vl-finetune/qwenvl/train/train_qwen.py
+                codePathLocal: qwen-vl-finetune/qwenvl/train/train_qwen.py
+                cpu_count: 128
+                cpu_count_logical: 256
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "811496751104"
+                        used: "9489399808"
+                email: mercury1997xia@gmail.com
+                executable: /scr/anaconda3_xiasu/envs/general/bin/python3.10
+                git:
+                    commit: e5c7e5c26af6a8bd65aec9388f3642cf6ea9d75c
+                    remote: https://github.com/QwenLM/Qwen3-VL.git
+                gpu: NVIDIA L40S
+                gpu_count: 2
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 18176
+                      memoryTotal: "48305799168"
+                      name: NVIDIA L40S
+                      uuid: GPU-c40b3ad3-5505-197f-1bf2-62e21fadf52c
+                    - architecture: Ada
+                      cudaCores: 18176
+                      memoryTotal: "48305799168"
+                      name: NVIDIA L40S
+                      uuid: GPU-e37efd06-7bef-d43f-9e5f-bae650e9206d
+                host: g3121
+                memory:
+                    total: "1622993502208"
+                os: Linux-4.18.0-513.18.1.el8_9.x86_64-x86_64-with-glibc2.28
+                program: /mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen.py
+                python: CPython 3.10.19
+                root: /mmfs1/gscratch/makelab/xia/Qwen3-VL
+                slurm:
+                    cluster_name: klone
+                    conf: /var/spool/slurmd/conf-cache/slurm.conf
+                    cpus_on_node: "16"
+                    cpus_per_task: "16"
+                    gpus_on_node: "2"
+                    gtids: "0"
+                    job_account: makelab
+                    job_cpus_per_node: "16"
+                    job_end_time: "1767940553"
+                    job_gid: "226269"
+                    job_gpus: 3,4
+                    job_id: "32209466"
+                    job_name: interactive
+                    job_nodelist: g3121
+                    job_num_nodes: "1"
+                    job_partition: gpu-l40s
+                    job_qos: makelab-gpu-l40s
+                    job_start_time: "1767903353"
+                    job_uid: "1174095"
+                    job_user: xiasu
+                    jobid: "32209466"
+                    launch_node_ipaddr: 10.64.64.100
+                    localid: "0"
+                    mem_per_node: "65536"
+                    mpi_type: none
+                    nnodes: "1"
+                    nodeid: "0"
+                    nodelist: g3121
+                    oom_kill_step: "0"
+                    prio_process: "0"
+                    procid: "0"
+                    pty_port: "43573"
+                    pty_win_col: "272"
+                    pty_win_row: "22"
+                    script_context: prolog_task
+                    srun_comm_host: 10.64.64.100
+                    srun_comm_port: "33973"
+                    step_id: "4294967290"
+                    step_launcher_port: "33973"
+                    step_nodelist: g3121
+                    step_num_nodes: "1"
+                    step_num_tasks: "1"
+                    step_tasks_per_node: "1"
+                    stepid: "4294967290"
+                    submit_dir: /mmfs1/gscratch/makelab
+                    submit_host: klone-login03
+                    task_pid: "84405"
+                    tasks_per_node: "1"
+                    topology_addr: klone-ib-core.klone-ib-leaf-6j16-1.g3121
+                    topology_addr_pattern: switch.switch.node
+                    tres_per_task: cpu=16
+                startedAt: "2026-01-09T02:08:16.115841Z"
+                writerId: s8trghyi194tgup319tqqth8ekjypvvt
+        m:
+            - "1": train/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.10.19
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 51
+                - 71
+                - 98
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 51
+                - 71
+                - 98
+            "3":
+                - 7
+                - 13
+                - 19
+                - 62
+                - 66
+            "4": 3.10.19
+            "5": 0.23.1
+            "6": 4.57.1
+            "9":
+                "1": transformers_trainer
+            "12": 0.23.1
+            "13": linux-x86_64
+accelerator_config:
+    value:
+        dispatch_batches: null
+        even_batches: true
+        gradient_accumulation_kwargs: null
+        non_blocking: false
+        split_batches: false
+        use_seedable_sampler: true
+adafactor:
+    value: false
+adam_beta1:
+    value: 0.9
+adam_beta2:
+    value: 0.999
+adam_epsilon:
+    value: 1e-08
+add_cross_attention:
+    value: false
+architectures:
+    value:
+        - Qwen3VLForConditionalGeneration
+auto_find_batch_size:
+    value: false
+average_tokens_across_devices:
+    value: true
+bad_words_ids:
+    value: null
+batch_eval_metrics:
+    value: false
+begin_suppress_tokens:
+    value: null
+bf16:
+    value: true
+bf16_full_eval:
+    value: false
+bos_token_id:
+    value: null
+cache_dir:
+    value: null
+chunk_size_feed_forward:
+    value: 0
+cross_attention_hidden_size:
+    value: null
+data_seed:
+    value: null
+dataloader_drop_last:
+    value: false
+dataloader_num_workers:
+    value: 4
+dataloader_persistent_workers:
+    value: false
+dataloader_pin_memory:
+    value: true
+dataloader_prefetch_factor:
+    value: null
+ddp_backend:
+    value: null
+ddp_broadcast_buffers:
+    value: null
+ddp_bucket_cap_mb:
+    value: null
+ddp_find_unused_parameters:
+    value: null
+ddp_timeout:
+    value: 1800
+debug:
+    value: []
+decoder_start_token_id:
+    value: null
+deepspeed:
+    value: null
+disable_tqdm:
+    value: false
+diversity_penalty:
+    value: 0
+do_eval:
+    value: false
+do_predict:
+    value: false
+do_sample:
+    value: false
+do_train:
+    value: false
+dtype:
+    value: bfloat16
+early_stopping:
+    value: false
+encoder_no_repeat_ngram_size:
+    value: 0
+eos_token_id:
+    value: 151645
+eval_accumulation_steps:
+    value: null
+eval_delay:
+    value: 0
+eval_do_concat_batches:
+    value: true
+eval_on_start:
+    value: false
+eval_steps:
+    value: null
+eval_strategy:
+    value: "no"
+eval_use_gather_object:
+    value: false
+exponential_decay_length_penalty:
+    value: null
+finetuning_task:
+    value: null
+forced_bos_token_id:
+    value: null
+forced_eos_token_id:
+    value: null
+fp16:
+    value: false
+fp16_backend:
+    value: auto
+fp16_full_eval:
+    value: false
+fp16_opt_level:
+    value: O1
+fsdp:
+    value: []
+fsdp_config:
+    value:
+        min_num_params: 0
+        xla: false
+        xla_fsdp_grad_ckpt: false
+        xla_fsdp_v2: false
+fsdp_min_num_params:
+    value: 0
+fsdp_transformer_layer_cls_to_wrap:
+    value: null
+full_determinism:
+    value: false
+gradient_accumulation_steps:
+    value: 4
+gradient_checkpointing:
+    value: false
+gradient_checkpointing_kwargs:
+    value: null
+greater_is_better:
+    value: null
+group_by_length:
+    value: false
+half_precision_backend:
+    value: auto
+hub_always_push:
+    value: false
+hub_model_id:
+    value: null
+hub_private_repo:
+    value: null
+hub_revision:
+    value: null
+hub_strategy:
+    value: every_save
+hub_token:
+    value: <HUB_TOKEN>
+id2label:
+    value:
+        "0": LABEL_0
+        "1": LABEL_1
+ignore_data_skip:
+    value: false
+image_token_id:
+    value: 151655
+include_for_metrics:
+    value: []
+include_inputs_for_metrics:
+    value: false
+include_num_input_tokens_seen:
+    value: "no"
+include_tokens_per_second:
+    value: false
+is_decoder:
+    value: false
+is_encoder_decoder:
+    value: false
+jit_mode_eval:
+    value: false
+label_names:
+    value: null
+label_smoothing_factor:
+    value: 0
+label2id:
+    value:
+        LABEL_0: 0
+        LABEL_1: 1
+learning_rate:
+    value: 0.0001
+length_column_name:
+    value: length
+length_penalty:
+    value: 1
+liger_kernel_config:
+    value: null
+load_best_model_at_end:
+    value: false
+local_rank:
+    value: 0
+log_level:
+    value: passive
+log_level_replica:
+    value: warning
+log_on_each_node:
+    value: true
+logging_dir:
+    value: ./output/runs/Jan08_18-05-49_g3121
+logging_first_step:
+    value: false
+logging_nan_inf_filter:
+    value: true
+logging_steps:
+    value: 1
+logging_strategy:
+    value: steps
+lora_alpha:
+    value: 16
+lora_dropout:
+    value: 0
+lora_enable:
+    value: true
+lora_r:
+    value: 8
+lr_scheduler_type:
+    value: cosine
+max_grad_norm:
+    value: 1
+max_length:
+    value: 20
+max_steps:
+    value: -1
+metric_for_best_model:
+    value: null
+min_length:
+    value: 0
+mm_projector_lr:
+    value: null
+model/num_parameters:
+    value: 8774791408
+model_max_length:
+    value: 8192
+model_type:
+    value: qwen3_vl
+mp_parameters:
+    value: ""
+neftune_noise_alpha:
+    value: null
+no_cuda:
+    value: false
+no_repeat_ngram_size:
+    value: 0
+num_beam_groups:
+    value: 1
+num_beams:
+    value: 1
+num_return_sequences:
+    value: 1
+num_train_epochs:
+    value: 1
+optim:
+    value: adamw_torch
+optim_args:
+    value: null
+optim_target_modules:
+    value: null
+output_attentions:
+    value: false
+output_dir:
+    value: ./output
+output_hidden_states:
+    value: false
+output_scores:
+    value: false
+overwrite_output_dir:
+    value: false
+pad_token_id:
+    value: 151643
+parallelism_config:
+    value: null
+past_index:
+    value: -1
+peft_config:
+    value:
+        default:
+            alora_invocation_tokens: null
+            arrow_config: null
+            auto_mapping: null
+            base_model_name_or_path: Qwen/Qwen3-VL-8B-Instruct
+            bias: none
+            corda_config: null
+            ensure_weight_tying: false
+            eva_config: null
+            exclude_modules: null
+            fan_in_fan_out: false
+            inference_mode: false
+            init_lora_weights: true
+            layer_replication: null
+            layers_pattern: null
+            layers_to_transform: null
+            lora_alpha: 16
+            lora_bias: false
+            lora_dropout: 0.05
+            megatron_config: null
+            megatron_core: megatron.core
+            modules_to_save: null
+            peft_type: LORA
+            peft_version: 0.18.0
+            qalora_group_size: 16
+            r: 8
+            revision: null
+            runtime_config:
+                ephemeral_gpu_offload: false
+            target_modules:
+                - o_proj
+                - q_proj
+                - k_proj
+                - v_proj
+            target_parameters: null
+            task_type: CAUSAL_LM
+            trainable_token_indices: null
+            use_dora: false
+            use_qalora: false
+            use_rslora: false
+per_device_eval_batch_size:
+    value: 8
+per_device_train_batch_size:
+    value: 4
+per_gpu_eval_batch_size:
+    value: null
+per_gpu_train_batch_size:
+    value: null
+prediction_loss_only:
+    value: false
+prefix:
+    value: null
+problem_type:
+    value: null
+project:
+    value: huggingface
+push_to_hub:
+    value: false
+push_to_hub_model_id:
+    value: null
+push_to_hub_organization:
+    value: null
+push_to_hub_token:
+    value: <PUSH_TO_HUB_TOKEN>
+ray_scope:
+    value: last
+remove_invalid_values:
+    value: false
+remove_unused_columns:
+    value: true
+repetition_penalty:
+    value: 1
+report_to:
+    value:
+        - wandb
+restore_callback_states_from_checkpoint:
+    value: false
+resume_from_checkpoint:
+    value: null
+return_dict:
+    value: true
+return_dict_in_generate:
+    value: false
+run_name:
+    value: qwen3vl-chartqa-test
+save_on_each_node:
+    value: false
+save_only_model:
+    value: false
+save_safetensors:
+    value: true
+save_steps:
+    value: 1000
+save_strategy:
+    value: steps
+save_total_limit:
+    value: 1
+seed:
+    value: 42
+sep_token_id:
+    value: null
+skip_memory_metrics:
+    value: true
+suppress_tokens:
+    value: null
+task_specific_params:
+    value: null
+temperature:
+    value: 1
+text_config:
+    value:
+        _name_or_path: ""
+        add_cross_attention: false
+        architectures: null
+        attention_bias: false
+        attention_dropout: 0
+        bad_words_ids: null
+        begin_suppress_tokens: null
+        bos_token_id: 151643
+        chunk_size_feed_forward: 0
+        cross_attention_hidden_size: null
+        decoder_start_token_id: null
+        diversity_penalty: 0
+        do_sample: false
+        dtype: bfloat16
+        early_stopping: false
+        encoder_no_repeat_ngram_size: 0
+        eos_token_id: 151645
+        exponential_decay_length_penalty: null
+        finetuning_task: null
+        forced_bos_token_id: null
+        forced_eos_token_id: null
+        head_dim: 128
+        hidden_act: silu
+        hidden_size: 4096
+        id2label:
+            "0": LABEL_0
+            "1": LABEL_1
+        initializer_range: 0.02
+        intermediate_size: 12288
+        is_decoder: false
+        is_encoder_decoder: false
+        label2id:
+            LABEL_0: 0
+            LABEL_1: 1
+        length_penalty: 1
+        max_length: 20
+        max_position_embeddings: 262144
+        min_length: 0
+        model_type: qwen3_vl_text
+        no_repeat_ngram_size: 0
+        num_attention_heads: 32
+        num_beam_groups: 1
+        num_beams: 1
+        num_hidden_layers: 36
+        num_key_value_heads: 8
+        num_return_sequences: 1
+        output_attentions: false
+        output_hidden_states: false
+        output_scores: false
+        pad_token_id: null
+        prefix: null
+        problem_type: null
+        remove_invalid_values: false
+        repetition_penalty: 1
+        return_dict: true
+        return_dict_in_generate: false
+        rms_norm_eps: 1e-06
+        rope_scaling:
+            mrope_interleaved: true
+            mrope_section:
+                - 24
+                - 20
+                - 20
+            rope_type: default
+        rope_theta: 5000000
+        sep_token_id: null
+        suppress_tokens: null
+        task_specific_params: null
+        temperature: 1
+        tf_legacy_loss: false
+        tie_encoder_decoder: false
+        tie_word_embeddings: false
+        tokenizer_class: null
+        top_k: 50
+        top_p: 1
+        torchscript: false
+        typical_p: 1
+        use_bfloat16: false
+        use_cache: true
+        vocab_size: 151936
+tf_legacy_loss:
+    value: false
+tf32:
+    value: null
+tie_encoder_decoder:
+    value: false
+tie_word_embeddings:
+    value: false
+tokenizer_class:
+    value: null
+top_k:
+    value: 50
+top_p:
+    value: 1
+torch_compile:
+    value: false
+torch_compile_backend:
+    value: null
+torch_compile_mode:
+    value: null
+torch_empty_cache_steps:
+    value: null
+torchdynamo:
+    value: null
+torchscript:
+    value: false
+tpu_metrics_debug:
+    value: false
+tpu_num_cores:
+    value: null
+trackio_space_id:
+    value: trackio
+transformers_version:
+    value: 4.57.1
+typical_p:
+    value: 1
+use_bfloat16:
+    value: false
+use_cache:
+    value: false
+use_cpu:
+    value: false
+use_legacy_prediction_loop:
+    value: false
+use_liger_kernel:
+    value: false
+use_mps_device:
+    value: false
+video_token_id:
+    value: 151656
+vision_config:
+    value:
+        _name_or_path: ""
+        add_cross_attention: false
+        architectures: null
+        bad_words_ids: null
+        begin_suppress_tokens: null
+        bos_token_id: null
+        chunk_size_feed_forward: 0
+        cross_attention_hidden_size: null
+        decoder_start_token_id: null
+        deepstack_visual_indexes:
+            - 8
+            - 16
+            - 24
+        depth: 27
+        diversity_penalty: 0
+        do_sample: false
+        dtype: bfloat16
+        early_stopping: false
+        encoder_no_repeat_ngram_size: 0
+        eos_token_id: null
+        exponential_decay_length_penalty: null
+        finetuning_task: null
+        forced_bos_token_id: null
+        forced_eos_token_id: null
+        hidden_act: gelu_pytorch_tanh
+        hidden_size: 1152
+        id2label:
+            "0": LABEL_0
+            "1": LABEL_1
+        in_channels: 3
+        initializer_range: 0.02
+        intermediate_size: 4304
+        is_decoder: false
+        is_encoder_decoder: false
+        label2id:
+            LABEL_0: 0
+            LABEL_1: 1
+        length_penalty: 1
+        max_length: 20
+        min_length: 0
+        model_type: qwen3_vl
+        no_repeat_ngram_size: 0
+        num_beam_groups: 1
+        num_beams: 1
+        num_heads: 16
+        num_position_embeddings: 2304
+        num_return_sequences: 1
+        out_hidden_size: 4096
+        output_attentions: false
+        output_hidden_states: false
+        output_scores: false
+        pad_token_id: null
+        patch_size: 16
+        prefix: null
+        problem_type: null
+        remove_invalid_values: false
+        repetition_penalty: 1
+        return_dict: true
+        return_dict_in_generate: false
+        sep_token_id: null
+        spatial_merge_size: 2
+        suppress_tokens: null
+        task_specific_params: null
+        temperature: 1
+        temporal_patch_size: 2
+        tf_legacy_loss: false
+        tie_encoder_decoder: false
+        tie_word_embeddings: true
+        tokenizer_class: null
+        top_k: 50
+        top_p: 1
+        torchscript: false
+        typical_p: 1
+        use_bfloat16: false
+vision_end_token_id:
+    value: 151653
+vision_start_token_id:
+    value: 151652
+vision_tower_lr:
+    value: null
+warmup_ratio:
+    value: 0.03
+warmup_steps:
+    value: 0
+weight_decay:
+    value: 0

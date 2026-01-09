@@ -26,12 +26,30 @@ VIDEOCHATGPT = {
     "data_path": "PATH_TO_VIDEOCHATGPT_DATA",
 }
 
+DEMO_VIDEO_DATASET = {
+    "annotation_path": "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/demo/video.json",
+    "data_path": "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/demo/videos",  # Can be empty if paths are in annotations
+}
+
+DEMO_IMAGE_DATASET = {
+    "annotation_path": "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune/demo/single_images.json",
+    "data_path": "/mmfs1/home/xiasu/Qwen3-VL/qwen-vl-finetune",  # Can be empty if paths are in annotations
+}
+
+CHARTQA = {
+    "annotation_path": "/gscratch/makelab/xia/datasets/chartqa_qwen/train.json",
+    "data_path": "/gscratch/makelab/xia/datasets/chartqa_qwen",
+}
+
 data_dict = {
     "cambrian_737k": CAMBRIAN_737K,
     "cambrian_737k_pack": CAMBRIAN_737K_PACK,
     "mp_doc": MP_DOC,
     "clevr_mc": CLEVR_MC,
     "videochatgpt": VIDEOCHATGPT,
+    "demo_video_dataset": DEMO_VIDEO_DATASET,
+    "demo_image_dataset": DEMO_IMAGE_DATASET,
+    "chartqa": CHARTQA,
 }
 
 

@@ -4,31 +4,31 @@
 MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
 MASTER_PORT=${MASTER_PORT:-$(shuf -i 20001-29999 -n 1)}
 NNODES=${WORLD_SIZE:-1}
+NPROC_PER_NODE=${NPROC_PER_NODE:-2}
 
 # DeepSpeed configuration
-deepspeed=./scripts/zero3.json
+deepspeed=./qwen-vl-finetune/scripts/zero3.json
 
 # Model configuration
-llm=Qwen/Qwen3-VL-8B-Thinking  # Using HuggingFace model ID
+llm=Qwen/Qwen3-VL-8B-Instruct  # Using HuggingFace model ID
 
 # Training hyperparameters
-lr=2e-7
+lr=1e-4
 batch_size=4
 grad_accum_steps=4
 
 # Training entry point
-entry_file=qwenvl/train/train_qwen.py
+entry_file=qwen-vl-finetune/qwenvl/train/train_qwen.py
 
 # Dataset configuration (replace with public dataset names)
-datasets=public_dataset1,public_dataset2
+datasets=chartqa
 
 # Output configuration
-run_name="qwen2vl-baseline"
-output_dir=./output
+run_name="qwen3vl-chartqa-test"
+output_dir=./output/chartqa-test-1
 
 # Training arguments
 args="
-    --deepspeed ${deepspeed} \
     --model_name_or_path "${llm}" \
     --dataset_use ${datasets} \
     --data_flatten True \
@@ -37,7 +37,7 @@ args="
     --tune_mm_llm True \
     --bf16 \
     --output_dir ${output_dir} \
-    --num_train_epochs 0.5 \
+    --num_train_epochs 1 \
     --per_device_train_batch_size ${batch_size} \
     --per_device_eval_batch_size $((batch_size*2)) \
     --gradient_accumulation_steps ${grad_accum_steps} \
@@ -54,13 +54,15 @@ args="
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
     --model_max_length 8192 \
-    --gradient_checkpointing True \
+    --gradient_checkpointing False \
     --dataloader_num_workers 4 \
     --run_name ${run_name} \
+    --lora_enable True \
+    --lora_r 8 \
+    --lora_alpha 16 \
+    --lora_dropout 0.0 \
     --report_to wandb"
 
 # Launch training
-torchrun --nproc_per_node=${NPROC_PER_NODE} \
-         --master_addr=${MASTER_ADDR} \
-         --master_port=${MASTER_PORT} \
+torchrun --nproc_per_node=${NPROC_PER_NODE}\
          ${entry_file} ${args}
