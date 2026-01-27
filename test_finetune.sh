@@ -13,22 +13,23 @@ deepspeed=./qwen-vl-finetune/scripts/zero3.json
 llm=Qwen/Qwen3-VL-8B-Instruct  # Using HuggingFace model ID
 
 # Training hyperparameters
-lr=1e-4
-batch_size=4
-grad_accum_steps=4
+lr=3e-5
+batch_size=1
+grad_accum_steps=8
 
 # Training entry point
 entry_file=qwen-vl-finetune/qwenvl/train/train_qwen.py
 
 # Dataset configuration (replace with public dataset names)
-datasets=chartqa
+datasets=capnav
 
 # Output configuration
-run_name="qwen3vl-chartqa-test"
-output_dir=./output/chartqa-test-1
+run_name="capnav-test-2-exclude00000"
+output_dir=./output/capnav-test-2-exclude00000
 
 # Training arguments
 args="
+    --deepspeed ${deepspeed} \
     --model_name_or_path "${llm}" \
     --dataset_use ${datasets} \
     --data_flatten True \
@@ -37,7 +38,7 @@ args="
     --tune_mm_llm True \
     --bf16 \
     --output_dir ${output_dir} \
-    --num_train_epochs 1 \
+    --num_train_epochs 3 \
     --per_device_train_batch_size ${batch_size} \
     --per_device_eval_batch_size $((batch_size*2)) \
     --gradient_accumulation_steps ${grad_accum_steps} \
@@ -45,7 +46,7 @@ args="
     --min_pixels 784 \
     --eval_strategy "no" \
     --save_strategy "steps" \
-    --save_steps 1000 \
+    --save_steps 500 \
     --save_total_limit 1 \
     --learning_rate ${lr} \
     --weight_decay 0 \
@@ -57,6 +58,9 @@ args="
     --gradient_checkpointing False \
     --dataloader_num_workers 4 \
     --run_name ${run_name} \
+    --video_fps 1 \
+    --video_max_frames 64 \
+    --video_min_frames 16 \
     --lora_enable True \
     --lora_r 8 \
     --lora_alpha 16 \

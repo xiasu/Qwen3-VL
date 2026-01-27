@@ -41,6 +41,11 @@ CHARTQA = {
     "data_path": "/gscratch/makelab/xia/datasets/chartqa_qwen",
 }
 
+CAPNAV = {
+    "annotation_path": "/gscratch/makelab/xia/datasets/capnav/all_scenes.json",
+    "data_path": "/gscratch/makelab/xia/datasets/capnav/videos",
+}
+
 data_dict = {
     "cambrian_737k": CAMBRIAN_737K,
     "cambrian_737k_pack": CAMBRIAN_737K_PACK,
@@ -50,6 +55,7 @@ data_dict = {
     "demo_video_dataset": DEMO_VIDEO_DATASET,
     "demo_image_dataset": DEMO_IMAGE_DATASET,
     "chartqa": CHARTQA,
+    "capnav": CAPNAV,
 }
 
 

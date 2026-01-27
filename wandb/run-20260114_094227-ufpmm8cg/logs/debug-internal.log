@@ -1,0 +1,12 @@
+{"time":"2026-01-14T09:42:28.246799131-08:00","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-01-14T09:42:28.465406743-08:00","level":"INFO","msg":"stream: created new stream","id":"ufpmm8cg"}
+{"time":"2026-01-14T09:42:28.465487034-08:00","level":"INFO","msg":"handler: started","stream_id":"ufpmm8cg"}
+{"time":"2026-01-14T09:42:28.466338352-08:00","level":"INFO","msg":"stream: started","id":"ufpmm8cg"}
+{"time":"2026-01-14T09:42:28.466355868-08:00","level":"INFO","msg":"writer: started","stream_id":"ufpmm8cg"}
+{"time":"2026-01-14T09:42:28.466364261-08:00","level":"INFO","msg":"sender: started","stream_id":"ufpmm8cg"}
+{"time":"2026-01-14T09:55:11.434970735-08:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/mercury1997xia-university-of-washington/huggingface/ufpmm8cg/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2026-01-14T11:30:20.439228281-08:00","level":"INFO","msg":"stream: closing","id":"ufpmm8cg"}
+{"time":"2026-01-14T11:30:20.959804913-08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-14T11:30:21.131896822-08:00","level":"INFO","msg":"handler: closed","stream_id":"ufpmm8cg"}
+{"time":"2026-01-14T11:30:21.688721012-08:00","level":"INFO","msg":"sender: closed","stream_id":"ufpmm8cg"}
+{"time":"2026-01-14T11:30:21.688795193-08:00","level":"INFO","msg":"stream: closed","id":"ufpmm8cg"}
