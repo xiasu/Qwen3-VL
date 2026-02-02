@@ -3,7 +3,7 @@ from transformers import AutoModelForImageTextToText, AutoProcessor
 from peft import PeftModel
 # default: Load the model on the available device(s)
 base_model = AutoModelForImageTextToText.from_pretrained(
-    "Qwen/Qwen3-VL-8B-Thinking", dtype="auto", device_map="auto", attn_implementation="flash_attention_2",
+    "Qwen/Qwen/Qwen3-VL-8B-Instruct", dtype="auto", device_map="auto", attn_implementation="flash_attention_2",
 )
 
 # We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
@@ -14,7 +14,7 @@ base_model = AutoModelForImageTextToText.from_pretrained(
 #     device_map="auto",
 # )
 
-processor = AutoProcessor.from_pretrained("Qwen/Qwen3-VL-235B-A22B-Instruct")
+processor = AutoProcessor.from_pretrained("Qwen/Qwen3-VL-8B-Instruct")
 
 # 1. Video Query
 messages = [

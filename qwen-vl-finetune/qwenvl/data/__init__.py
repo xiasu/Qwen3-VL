@@ -42,7 +42,7 @@ CHARTQA = {
 }
 
 CAPNAV = {
-    "annotation_path": "/gscratch/makelab/xia/datasets/capnav/all_scenes.json",
+    "annotation_path": "/gscratch/makelab/xia/datasets/capnav/train.json",
     "data_path": "/gscratch/makelab/xia/datasets/capnav/videos",
 }
 

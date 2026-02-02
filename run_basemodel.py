@@ -17,7 +17,7 @@ from tqdm import tqdm
 # USER_ROOT = PROJECT_ROOT.parent                   # /.../ruiqi
 
 ALL_SCENES_JSON = Path("/gscratch/makelab/xia/datasets/capnav/test.json")
-OUTPUT_DIR = Path("/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results")
+OUTPUT_DIR = Path("/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results_basemodel")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 LORA_PATH = Path("/gscratch/makelab/xia/Qwen3-VL/output/capnav-train-split-1epoch/checkpoint-656")
@@ -144,9 +144,7 @@ base_model = AutoModelForImageTextToText.from_pretrained(
     attn_implementation="flash_attention_2",
 )
 processor = AutoProcessor.from_pretrained(PROCESSOR_ID)
-model = PeftModel.from_pretrained(base_model, str(LORA_PATH))
-model = model.merge_and_unload()
-model = model.eval()
+model = base_model.eval()
 model.config.use_cache = True
 
 
@@ -210,6 +208,7 @@ for idx in pbar:
             raise ValueError("No human turn found in conversations")
 
         prompt_text = strip_video_marker(human_turn.get("value", ""))
+        prompt_text = prompt_text + "\n Make sure that the path format is <node_name1> -> <node_name2> -> ... -> <node_nameN>." + question_text
         question_text = parse_question(prompt_text)
         agent_name = parse_agent(question_text)
         qid = make_qid(scene_id, agent_name, question_text)

@@ -11,13 +11,13 @@ from typing import Dict, List, Optional, Tuple, Iterable
 # CONFIG
 # =========================================================
 SCRIPT_DIR = Path(__file__).resolve().parent
-RESULTS_DIR = SCRIPT_DIR / "capnav_qa_results"
+RESULTS_DIR = SCRIPT_DIR / "capnav_qa_results_basemodel"
 DEFAULT_JSONL = RESULTS_DIR / "test.jsonl"
 
 GT_ROOT = Path("/mmfs1/gscratch/makelab/ruiqi/datasets/capnav/ground_truth")
 
-OUT_PER_RECORD = RESULTS_DIR / "scored_per_record.jsonl"
-OUT_SUMMARY = RESULTS_DIR / "scored_summary.json"
+OUT_PER_RECORD = RESULTS_DIR / "scored_per_record_basemodel.jsonl"
+OUT_SUMMARY = RESULTS_DIR / "scored_summary_basemodel.json"
 
 _SCENE_CACHE: Dict[str, Tuple[Dict, Dict]] = {}
 

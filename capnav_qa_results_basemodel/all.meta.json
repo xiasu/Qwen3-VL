@@ -1,0 +1,18 @@
+{
+  "all_scenes_json": "/gscratch/makelab/xia/datasets/capnav/test.json",
+  "video_root": "/gscratch/makelab/xia/datasets/capnav/videos",
+  "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+  "processor": "Qwen/Qwen3-VL-8B-Instruct",
+  "lora_path": "/gscratch/makelab/xia/Qwen3-VL/output/capnav-train-split-1epoch/checkpoint-656",
+  "max_new_tokens": 9280,
+  "num_entries_total": 1495,
+  "num_scenes_total": 5,
+  "missing_video_entries": 0,
+  "scene_counts": {
+    "HM3D00003": 840,
+    "MP3D00006": 40,
+    "HM3D00007": 180,
+    "MP3D00001": 255,
+    "HM3D00014": 180
+  }
+}
