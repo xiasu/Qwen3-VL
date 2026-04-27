@@ -1,0 +1,83 @@
+  0%|          | 0/20970 [00:00<?, ?it/s]Could not estimate the number of tokens of the input, floating-point operations will not be computed
+  0%|          | 2/20970 [00:26<68:18:25, 11.73s/it]Traceback (most recent call last):
+{'loss': 0.1801, 'grad_norm': 1.116349477979128, 'learning_rate': 0.0, 'num_tokens': 6544.0, 'completions/mean_length': 25.5, 'completions/min_length': 7.0, 'completions/max_length': 44.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 25.5, 'completions/min_terminated_length': 7.0, 'completions/max_terminated_length': 44.0, 'rewards/capnav_reward/mean': 0.8125, 'rewards/capnav_reward/std': 0.40311288833618164, 'reward': 0.8125, 'reward_std': 0.40311288833618164, 'frac_reward_zero_std': 0.0, 'entropy': 0.18795818090438843, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 13.267258473904803, 'epoch': 0.0}
+{'loss': -0.1631, 'grad_norm': 0.3788377923752062, 'learning_rate': 3.174603174603175e-08, 'entropy': 0.03283793851733208, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 3.898666081018746, 'epoch': 0.0}
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 1041, in <module>
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1160, in training_step
+    output = super().training_step(model, inputs, num_items_in_batch)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4014, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+    return func(self, *args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1189, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1918, in _generate_and_score_completions
+    old_per_token_logps, _ = self._get_per_token_logps_and_entropies(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+    return func(self, *args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1003, in _get_per_token_logps_and_entropies
+    logits = model(**model_inputs).logits
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1816, in inner
+    args_result = hook(self, args)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/parameter_offload.py", line 253, in _start_of_forward_hook
+    self.get_param_coordinator().reset_step()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+    return fn(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 241, in reset_step
+    self.construct_parameter_trace_from_module_trace()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 225, in construct_parameter_trace_from_module_trace
+    self.record_parameters(sub_module)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 217, in record_parameters
+    step_id = self.__step_id_module_fetched_for[sub_module.ds_id].popleft()
+IndexError: pop from an empty deque
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 1041, in <module>
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1160, in training_step
+[rank0]:     output = super().training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4014, in training_step
+[rank0]:     inputs = self._prepare_inputs(inputs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+[rank0]:     return func(self, *args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1189, in _prepare_inputs
+[rank0]:     generation_batch = self._generate_and_score_completions(generation_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1918, in _generate_and_score_completions
+[rank0]:     old_per_token_logps, _ = self._get_per_token_logps_and_entropies(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+[rank0]:     return func(self, *args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1003, in _get_per_token_logps_and_entropies
+[rank0]:     logits = model(**model_inputs).logits
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1816, in inner
+[rank0]:     args_result = hook(self, args)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/parameter_offload.py", line 253, in _start_of_forward_hook
+[rank0]:     self.get_param_coordinator().reset_step()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 241, in reset_step
+[rank0]:     self.construct_parameter_trace_from_module_trace()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 225, in construct_parameter_trace_from_module_trace
+[rank0]:     self.record_parameters(sub_module)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/partitioned_param_coordinator.py", line 217, in record_parameters
+[rank0]:     step_id = self.__step_id_module_fetched_for[sub_module.ds_id].popleft()
+[rank0]: IndexError: pop from an empty deque

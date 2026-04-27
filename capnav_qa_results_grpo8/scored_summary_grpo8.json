@@ -1,0 +1,51 @@
+{
+  "n_records": 1495,
+  "n_ok": 1495,
+  "n_fail": 0,
+  "n_correct": 576,
+  "pv_total": 922,
+  "pv_valid": 360,
+  "rta_count": 0,
+  "rta_sum": 0.0,
+  "rv_count": 922,
+  "rv_sum": 0.0,
+  "format_errors": 573,
+  "accuracy": 0.38528428093645484,
+  "pv_validity_rate": 0.39045553145336226,
+  "avg_traversability_score": 0.0,
+  "avg_rv_score": 0.0,
+  "capnav_score": 0.1301518438177874,
+  "capnav_components": {
+    "f1": 0.0,
+    "pv": 0.39045553145336226,
+    "rta": 0.0,
+    "rv_excluded_default": true
+  },
+  "coverage": {
+    "pv_applicable_frac_over_ok": 0.6167224080267558,
+    "rta_applicable_frac_over_ok": 0.0,
+    "rv_applicable_frac_over_ok": 0.6167224080267558
+  },
+  "fail_reason_count": {},
+  "derive_method_count": {
+    "from_to_partition": 1485,
+    "degraded_closest": 10
+  },
+  "format_error_details": {
+    "cannot_parse_answer_path": 573
+  },
+  "binary_classification": {
+    "TP": 0,
+    "FP": 102,
+    "FN": 817,
+    "TN": 576,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "accuracy": 0.38528428093645484
+  },
+  "input_files": [
+    "/mmfs1/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results_grpo8/all.results.jsonl"
+  ],
+  "per_record_output": "/mmfs1/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results_grpo8/scored_per_record_grpo8.jsonl"
+}

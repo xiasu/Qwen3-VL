@@ -76,20 +76,13 @@ from torch.utils.data import Dataset
 @dataclass
 class QwenScriptArguments(ScriptArguments):
     """Extended script arguments for Qwen-VL training."""
+    
+    # Note: max_pixels, min_pixels, and video_fps are defined in DataArguments
+    # to avoid argparse conflicts. Use --max_pixels, --min_pixels, --video_fps
+    # which will be parsed into DataArguments.
 
     data_root: Optional[str] = field(
         default="", metadata={"help": "Root directory for image/video files"}
-    )
-    max_pixels: int = field(
-        default=50176,  # ~224x224
-        metadata={"help": "Maximum number of pixels for image encoding"},
-    )
-    min_pixels: int = field(
-        default=784,  # ~28x28
-        metadata={"help": "Minimum number of pixels for image encoding"},
-    )
-    video_fps: float = field(
-        default=2.0, metadata={"help": "FPS for video frame extraction"}
     )
     lora_checkpoint_path: Optional[str] = field(
         default=None,
@@ -567,16 +560,24 @@ def capnav_reward(completions, **kwargs):
     return rewards
 
 class MetadataPreservingDataset(Dataset):
-    """Wrapper dataset that preserves metadata fields for reward functions."""
+    """Wrapper dataset that preserves metadata fields for reward functions and adds prompt field for GRPO."""
     
-    def __init__(self, base_dataset, metadata_fields=None):
+    def __init__(self, base_dataset, processor, metadata_fields=None):
         self.base_dataset = base_dataset
+        # Use processor from base_dataset if available (has the right config), otherwise use passed one
+        if hasattr(base_dataset, 'processor'):
+            self.processor = base_dataset.processor
+        else:
+            self.processor = processor
         self.metadata_fields = metadata_fields or []
         # Store metadata from original data if available
         if hasattr(base_dataset, 'list_data_dict'):
             self.metadata_list = base_dataset.list_data_dict
         else:
             self.metadata_list = None
+        # Store data_args if available
+        if hasattr(base_dataset, 'data_args'):
+            self.data_args = base_dataset.data_args
     
     def __len__(self):
         return len(self.base_dataset)
@@ -620,10 +621,82 @@ class MetadataPreservingDataset(Dataset):
         
         return None
     
+    def _build_messages_for_prompt(self, item: Dict) -> List[Dict]:
+        """Build messages from conversations for prompt generation (same logic as data_processor._build_messages)."""
+        from pathlib import Path
+        
+        # Extract and normalize images and videos
+        images = item.get("image") or []
+        if isinstance(images, str):
+            images = [images]
+
+        videos = item.get("video") or []
+        if isinstance(videos, str):
+            videos = [videos]
+
+        # Get base path and resolve media paths
+        data_path = item.get("data_path", "")
+        base_path = Path(data_path) if data_path else None
+        
+        # Build media pools with absolute paths
+        def resolve_media_path(media_path):
+            if not media_path:
+                return ""
+            media_path_obj = Path(media_path)
+            if media_path_obj.is_absolute():
+                return str(media_path_obj)
+            elif base_path:
+                return str((base_path / media_path).resolve())
+            else:
+                return str(media_path)
+        
+        image_pool = [
+            {"type": "image", "image": resolve_media_path(img)} for img in images
+        ]
+        video_pool = [
+            {"type": "video", "video": resolve_media_path(vid)} for vid in videos
+        ]
+
+        messages = []
+        for turn in item.get("conversations", []):
+            role = "user" if turn.get("from") == "human" else "assistant"
+            text: str = turn.get("value", "")
+
+            if role == "user":
+                content = []
+                # Split text by <image> or <video> placeholders while keeping delimiters
+                text_parts = re.split(r"(<image>|<video>)", text)
+
+                for seg in text_parts:
+                    if seg == "<image>":
+                        if not image_pool:
+                            raise ValueError(
+                                "Number of <image> placeholders exceeds the number of provided images"
+                            )
+                        content.append(image_pool.pop(0))
+                    elif seg == "<video>":
+                        if not video_pool:
+                            raise ValueError(
+                                "Number of <video> placeholders exceeds the number of provided videos"
+                            )
+                        content.append(video_pool.pop(0))
+                    elif seg.strip():
+                        content.append({"type": "text", "text": seg.strip()})
+
+                messages.append({"role": role, "content": content})
+            else:
+                # Assistant messages contain only text
+                messages.append({"role": role, "content": [{"type": "text", "text": text}]})
+
+        return messages
+    
     def __getitem__(self, idx):
         item = self.base_dataset[idx]
         
-        # Add metadata fields if available
+        # Always try to add prompt field - GRPOTrainer requires it
+        prompt_added = False
+        
+        # Add metadata fields and prompt if available
         if self.metadata_list and idx < len(self.metadata_list):
             metadata = self.metadata_list[idx]
             # Extract metadata fields (scene, agent, question) from original data
@@ -633,6 +706,55 @@ class MetadataPreservingDataset(Dataset):
                     if value is not None:
                         # Store as string to ensure it's serializable
                         item[field] = str(value) if not isinstance(value, str) else value
+                
+                # Build prompt from conversations for GRPOTrainer
+                # GRPOTrainer needs a "prompt" field for generation
+                try:
+                    messages = self._build_messages_for_prompt(metadata)
+                    # Apply chat template to create the prompt string
+                    # GRPOTrainer will tokenize this internally
+                    prompt_text = self.processor.apply_chat_template(
+                        messages, 
+                        add_generation_prompt=True,
+                        tokenize=False  # Get text string, not tokens
+                    )
+                    # Ensure it's a string
+                    if isinstance(prompt_text, list):
+                        # If it returns a list (some processors do), join it
+                        prompt_text = "".join(prompt_text) if all(isinstance(x, str) for x in prompt_text) else str(prompt_text)
+                    item["prompt"] = str(prompt_text)
+                    prompt_added = True
+                except Exception as e:
+                    # If prompt generation fails, try to decode from input_ids as fallback
+                    print(f"Warning: Failed to build prompt from conversations for item {idx}: {e}")
+        
+        # Fallback: if we couldn't build prompt from conversations, try to extract from input_ids
+        if not prompt_added and "input_ids" in item:
+            try:
+                # Decode the input_ids to get the prompt text
+                input_ids = item["input_ids"]
+                if isinstance(input_ids, list) and len(input_ids) > 0:
+                    input_ids = input_ids[0]
+                elif hasattr(input_ids, 'squeeze'):
+                    input_ids = input_ids.squeeze(0)
+                
+                # Decode to get the full text
+                full_text = self.processor.tokenizer.decode(
+                    input_ids,
+                    skip_special_tokens=False
+                )
+                # For GRPO, we need just the prompt part (before the answer)
+                # The answer typically starts after certain tokens - we'll use the full decoded text
+                # and let GRPOTrainer handle the splitting
+                item["prompt"] = full_text
+                prompt_added = True
+            except Exception as e2:
+                print(f"Warning: Fallback prompt generation from input_ids failed for item {idx}: {e2}")
+        
+        # Last resort: if we still don't have a prompt, create a minimal one
+        if not prompt_added:
+            print(f"Warning: Could not generate prompt for item {idx}, using empty string")
+            item["prompt"] = ""
         
         return item
 
@@ -651,11 +773,28 @@ if __name__ == "__main__":
     ################
     # Model & Processor
     ################
-    dtype = (
-        model_args.dtype
-        if model_args.dtype in ["auto", None]
-        else getattr(torch, model_args.dtype)
-    )
+    # Determine dtype: check training_args.bf16 first (like train_qwen.py), then model_args.dtype
+    if training_args.bf16:
+        dtype = torch.bfloat16
+    elif model_args.dtype and model_args.dtype not in ["auto", None]:
+        dtype = getattr(torch, model_args.dtype)
+    else:
+        dtype = None
+
+    # Determine attention implementation
+    # If not specified, default to flash_attention_2 (same as train_qwen.py)
+    attn_implementation = model_args.attn_implementation or "flash_attention_2"
+    
+    # Verify flash_attention_2 is available if requested
+    if attn_implementation == "flash_attention_2":
+        try:
+            import flash_attn
+            print("✓ flash_attention_2 is available and will be used")
+        except ImportError:
+            print("⚠ Warning: flash_attention_2 requested but flash_attn package not found")
+            print("  Falling back to sdpa (scaled dot product attention)")
+            print("  Install flash_attn for better performance: pip install flash-attn")
+            attn_implementation = "sdpa"
 
     # Determine model class based on model name
     # Note: Qwen3-VL-30B-A3B uses MoE architecture (A3B = Active 3B parameters)
@@ -681,9 +820,13 @@ if __name__ == "__main__":
 
     model_kwargs = dict(
         revision=model_args.model_revision,
-        attn_implementation=model_args.attn_implementation or "flash_attention_2",
+        attn_implementation=attn_implementation,
         dtype=dtype,
     )
+    
+    # Print dtype and attention implementation info
+    print(f"Model dtype: {dtype}")
+    print(f"Attention implementation: {attn_implementation}")
 
     # Add quantization config if specified
     quantization_config = get_quantization_config(model_args)
@@ -722,7 +865,7 @@ if __name__ == "__main__":
             raise FileNotFoundError(f"LoRA checkpoint not found: {lora_path}")
         
         print(f"Loading LoRA checkpoint from: {lora_path}")
-        model = PeftModel.from_pretrained(model, str(lora_path))
+        model = PeftModel.from_pretrained(model, str(lora_path),is_trainable=True)
         print("✓ LoRA checkpoint loaded successfully")
         print("  Note: GRPOTrainer will continue training from this checkpoint")
         print("  The model is already a PEFT model, so peft_config will be loaded from checkpoint")
@@ -733,22 +876,16 @@ if __name__ == "__main__":
         trust_remote_code=model_args.trust_remote_code,
     )
 
-    # Set processor pixels from data_args if available, otherwise use script_args
+    # Set processor pixels from data_args (these are now only in DataArguments)
     if hasattr(processor, "image_processor"):
         if hasattr(data_args, "max_pixels") and data_args.max_pixels:
             processor.image_processor.max_pixels = data_args.max_pixels
-        elif hasattr(script_args, "max_pixels"):
-            processor.image_processor.max_pixels = script_args.max_pixels
         if hasattr(data_args, "min_pixels") and data_args.min_pixels:
             processor.image_processor.min_pixels = data_args.min_pixels
-        elif hasattr(script_args, "min_pixels"):
-            processor.image_processor.min_pixels = script_args.min_pixels
     
     if hasattr(processor, "video_processor"):
         if hasattr(data_args, "video_fps") and data_args.video_fps:
             processor.video_processor.fps = data_args.video_fps
-        elif hasattr(script_args, "video_fps"):
-            processor.video_processor.fps = script_args.video_fps
 
     ################
     # Dataset
@@ -781,12 +918,12 @@ if __name__ == "__main__":
     base_train_dataset = data_module["train_dataset"]
     base_eval_dataset = data_module.get("eval_dataset")
     
-    # Wrap dataset to preserve metadata fields for capnav_reward
+    # Wrap dataset to preserve metadata fields for capnav_reward and add prompt field for GRPO
     # For capnav dataset, we need to preserve: scene, agent, question
     metadata_fields = ["scene", "agent", "question", "qid"]
-    train_dataset = MetadataPreservingDataset(base_train_dataset, metadata_fields=metadata_fields)
+    train_dataset = MetadataPreservingDataset(base_train_dataset, processor, metadata_fields=metadata_fields)
     eval_dataset = (
-        MetadataPreservingDataset(base_eval_dataset, metadata_fields=metadata_fields)
+        MetadataPreservingDataset(base_eval_dataset, processor, metadata_fields=metadata_fields)
         if base_eval_dataset is not None and training_args.eval_strategy != "no"
         else None
     )
@@ -794,6 +931,35 @@ if __name__ == "__main__":
     print(f"Train dataset size: {len(train_dataset)}")
     if eval_dataset:
         print(f"Eval dataset size: {len(eval_dataset)}")
+    
+    # Calculate and print expected training steps
+    num_gpus = training_args.world_size if hasattr(training_args, 'world_size') and training_args.world_size else 1
+    if not num_gpus or num_gpus == 0:
+        # Fallback: try to get from environment or default to NPROC_PER_NODE
+        import os
+        num_gpus = int(os.environ.get('WORLD_SIZE', os.environ.get('NPROC_PER_NODE', '1')))
+    
+    effective_batch_size = (
+        training_args.per_device_train_batch_size * 
+        num_gpus * 
+        training_args.gradient_accumulation_steps
+    )
+    steps_per_epoch = len(train_dataset) // effective_batch_size
+    total_steps = steps_per_epoch * training_args.num_train_epochs
+    
+    print("\n" + "="*60)
+    print("Training Configuration Summary:")
+    print("="*60)
+    print(f"Dataset size: {len(train_dataset):,} samples")
+    print(f"Per device batch size: {training_args.per_device_train_batch_size}")
+    print(f"Number of GPUs: {num_gpus}")
+    print(f"Gradient accumulation steps: {training_args.gradient_accumulation_steps}")
+    print(f"Effective batch size: {effective_batch_size}")
+    print(f"Number of epochs: {training_args.num_train_epochs}")
+    print(f"Steps per epoch: {steps_per_epoch:,}")
+    print(f"Total training steps: {total_steps:,}")
+    print(f"Warmup steps: {int(total_steps * training_args.warmup_ratio) if hasattr(training_args, 'warmup_ratio') else 'N/A'}")
+    print("="*60 + "\n")
 
     ################
     # PEFT Config
@@ -821,8 +987,57 @@ if __name__ == "__main__":
         processing_class=processor,
         peft_config=peft_config,
     )
+    
+    # Print GRPO-specific configuration and check actual step count
+    print("\n" + "="*60)
+    print("GRPO Configuration:")
+    print("="*60)
+    num_gens = getattr(training_args, 'num_generations', None)
+    if num_gens:
+        print(f"Number of generations per prompt: {num_gens}")
+        print(f"⚠ IMPORTANT: GRPO generates {num_gens} completions per sample")
+        print(f"  This means each sample is processed {num_gens} times during training")
+        print(f"  Standard calculation: {total_steps} steps")
+        print(f"  GRPO effective steps (if per-generation): {total_steps * num_gens}")
+        print(f"  Your observed steps: 5,242")
+        print(f"  Ratio: {5242 / total_steps:.2f}x (close to {num_gens}x)")
+    
+    # Check what the trainer actually calculates
+    # GRPOTrainer might use a different step calculation
+    try:
+        # Access the trainer's internal step calculation
+        if hasattr(trainer, 'get_train_dataloader'):
+            dataloader = trainer.get_train_dataloader()
+            if hasattr(dataloader, '__len__'):
+                dataloader_len = len(dataloader)
+                print(f"\nActual dataloader length: {dataloader_len}")
+                if dataloader_len != steps_per_epoch:
+                    print(f"⚠ Mismatch! Expected {steps_per_epoch}, got {dataloader_len}")
+    except Exception as e:
+        print(f"Could not check dataloader length: {e}")
+    
+    # Check training args for max_steps override
+    if hasattr(training_args, 'max_steps') and training_args.max_steps:
+        print(f"max_steps is set to: {training_args.max_steps}")
+    print("="*60 + "\n")
 
-    print("Starting training...")
+    # Check the actual step count that will be used
+    # GRPO might calculate steps differently
+    try:
+        # Try to access the trainer's step calculation
+        if hasattr(trainer, 'state') and hasattr(trainer.state, 'max_steps'):
+            actual_max_steps = trainer.state.max_steps
+            print(f"\n⚠ Trainer calculated max_steps: {actual_max_steps:,}")
+            if actual_max_steps and actual_max_steps != total_steps:
+                print(f"  This differs from our calculation: {total_steps:,}")
+                print(f"  Difference: {actual_max_steps - total_steps:,} steps")
+                if num_gens and abs(actual_max_steps / total_steps - num_gens) < 0.1:
+                    print(f"  ✓ This matches num_generations={num_gens} multiplier")
+                    print(f"  GRPO appears to process each sample {num_gens} times")
+    except Exception as e:
+        print(f"Could not check trainer max_steps: {e}")
+    
+    print("\nStarting training...")
     trainer.train()
 
     # Save model and processor

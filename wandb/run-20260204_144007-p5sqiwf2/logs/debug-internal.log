@@ -1,0 +1,7 @@
+{"time":"2026-02-04T14:40:07.66396297-08:00","level":"INFO","msg":"stream: starting","core version":"0.24.1"}
+{"time":"2026-02-04T14:40:07.882623566-08:00","level":"INFO","msg":"stream: created new stream","id":"p5sqiwf2"}
+{"time":"2026-02-04T14:40:07.882738031-08:00","level":"INFO","msg":"handler: started","stream_id":"p5sqiwf2"}
+{"time":"2026-02-04T14:40:07.883805368-08:00","level":"INFO","msg":"stream: started","id":"p5sqiwf2"}
+{"time":"2026-02-04T14:40:07.883816232-08:00","level":"INFO","msg":"writer: started","stream_id":"p5sqiwf2"}
+{"time":"2026-02-04T14:40:07.883825115-08:00","level":"INFO","msg":"sender: started","stream_id":"p5sqiwf2"}
+{"time":"2026-02-04T16:25:23.5455347-08:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/mercury1997xia-university-of-washington/capnav/p5sqiwf2/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}

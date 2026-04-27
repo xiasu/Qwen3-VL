@@ -1,9 +1,10 @@
 import time
 from transformers import AutoModelForImageTextToText, AutoProcessor
+import torch
 
 # default: Load the model on the available device(s)
 model = AutoModelForImageTextToText.from_pretrained(
-    "Qwen/Qwen3-VL-8B-Instruct", dtype="auto", device_map="auto", attn_implementation="flash_attention_2",
+    "Qwen/Qwen3-VL-8B-Instruct", dtype=torch.bfloat16, device_map="auto", attn_implementation="flash_attention_2",
 )
 
 # We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
@@ -55,6 +56,7 @@ output_text = processor.batch_decode(
 print(output_text)
 print(f"Image query took {image_query_time:.3f} seconds.")
 
+print("attn_implementation:", getattr(model.config, "_attn_implementation", None))
 print("attn_implementation:", getattr(model.config, "attn_implementation", None))
 # import transformers, torch
 # from transformers.utils import is_flash_attn_2_available

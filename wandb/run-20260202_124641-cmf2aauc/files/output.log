@@ -1,0 +1,44 @@
+  0%|                                                                                                                                                                                                                                                                                                                                        | 0/5242 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 813, in <module>
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1168, in training_step
+    output = super().training_step(model, inputs, num_items_in_batch)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4014, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+    return func(self, *args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1197, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1826, in _generate_and_score_completions
+    prompts = [x["prompt"] for x in inputs]
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1826, in <listcomp>
+    prompts = [x["prompt"] for x in inputs]
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/feature_extraction_utils.py", line 87, in __getitem__
+    return self.data[item]
+KeyError: 'prompt'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 813, in <module>
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1168, in training_step
+[rank0]:     output = super().training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4014, in training_step
+[rank0]:     inputs = self._prepare_inputs(inputs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+[rank0]:     return func(self, *args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1197, in _prepare_inputs
+[rank0]:     generation_batch = self._generate_and_score_completions(generation_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1826, in _generate_and_score_completions
+[rank0]:     prompts = [x["prompt"] for x in inputs]
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1826, in <listcomp>
+[rank0]:     prompts = [x["prompt"] for x in inputs]
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/feature_extraction_utils.py", line 87, in __getitem__
+[rank0]:     return self.data[item]
+[rank0]: KeyError: 'prompt'

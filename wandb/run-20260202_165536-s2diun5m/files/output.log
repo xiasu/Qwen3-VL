@@ -1,0 +1,145 @@
+  0%|                                                                                                                                                                                                                                                                                                                                        | 0/5242 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 942, in <module>
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1168, in training_step
+    output = super().training_step(model, inputs, num_items_in_batch)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4071, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/accelerator.py", line 2844, in backward
+    self.deepspeed_engine_wrapped.backward(loss, sync_gradients=self.sync_gradients, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 270, in backward
+    self.engine.backward(loss, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2532, in backward
+    loss.backward(**backward_kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_tensor.py", line 647, in backward
+    torch.autograd.backward(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/function.py", line 311, in apply
+    return user_fn(self, *args)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 563, in decorate_bwd
+    return bwd(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py", line 80, in backward
+    input, weight, bias = ctx.saved_tensors
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 1150, in unpack_hook
+    frame.check_recomputed_tensors_match(gid)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 903, in check_recomputed_tensors_match
+    raise CheckpointError(
+torch.utils.checkpoint.CheckpointError: torch.utils.checkpoint: Recomputed values for the following tensors have different metadata than during the forward pass.
+tensor at position 4:
+saved metadata: {'shape': torch.Size([4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 6:
+saved metadata: {'shape': torch.Size([4096, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 16:
+saved metadata: {'shape': torch.Size([128]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 18:
+saved metadata: {'shape': torch.Size([1024, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 28:
+saved metadata: {'shape': torch.Size([128]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 30:
+saved metadata: {'shape': torch.Size([1024, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 47:
+saved metadata: {'shape': torch.Size([4096, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 57:
+saved metadata: {'shape': torch.Size([4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 59:
+saved metadata: {'shape': torch.Size([12288, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+tensor at position 62:
+saved metadata: {'shape': torch.Size([12288, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+.
+
+Tip: To see a more detailed error message, either pass `debug=True` to
+`torch.utils.checkpoint.checkpoint(...)` or wrap the code block
+with `with torch.utils.checkpoint.set_checkpoint_debug_enabled(True):` to
+enable checkpoint‑debug mode globally.
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 942, in <module>
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1168, in training_step
+[rank0]:     output = super().training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4071, in training_step
+[rank0]:     self.accelerator.backward(loss, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/accelerator.py", line 2844, in backward
+[rank0]:     self.deepspeed_engine_wrapped.backward(loss, sync_gradients=self.sync_gradients, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 270, in backward
+[rank0]:     self.engine.backward(loss, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2532, in backward
+[rank0]:     loss.backward(**backward_kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/_tensor.py", line 647, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/__init__.py", line 354, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/autograd/function.py", line 311, in apply
+[rank0]:     return user_fn(self, *args)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 563, in decorate_bwd
+[rank0]:     return bwd(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/zero/linear.py", line 80, in backward
+[rank0]:     input, weight, bias = ctx.saved_tensors
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 1150, in unpack_hook
+[rank0]:     frame.check_recomputed_tensors_match(gid)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 903, in check_recomputed_tensors_match
+[rank0]:     raise CheckpointError(
+[rank0]: torch.utils.checkpoint.CheckpointError: torch.utils.checkpoint: Recomputed values for the following tensors have different metadata than during the forward pass.
+[rank0]: tensor at position 4:
+[rank0]: saved metadata: {'shape': torch.Size([4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 6:
+[rank0]: saved metadata: {'shape': torch.Size([4096, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 16:
+[rank0]: saved metadata: {'shape': torch.Size([128]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 18:
+[rank0]: saved metadata: {'shape': torch.Size([1024, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 28:
+[rank0]: saved metadata: {'shape': torch.Size([128]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 30:
+[rank0]: saved metadata: {'shape': torch.Size([1024, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 47:
+[rank0]: saved metadata: {'shape': torch.Size([4096, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 57:
+[rank0]: saved metadata: {'shape': torch.Size([4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 59:
+[rank0]: saved metadata: {'shape': torch.Size([12288, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: tensor at position 62:
+[rank0]: saved metadata: {'shape': torch.Size([12288, 4096]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: recomputed metadata: {'shape': torch.Size([0]), 'dtype': torch.bfloat16, 'device': device(type='cuda', index=0)}
+[rank0]: .
+
+[rank0]: Tip: To see a more detailed error message, either pass `debug=True` to
+[rank0]: `torch.utils.checkpoint.checkpoint(...)` or wrap the code block
+[rank0]: with `with torch.utils.checkpoint.set_checkpoint_debug_enabled(True):` to
+[rank0]: enable checkpoint‑debug mode globally.

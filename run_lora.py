@@ -17,10 +17,10 @@ from tqdm import tqdm
 # USER_ROOT = PROJECT_ROOT.parent                   # /.../ruiqi
 
 ALL_SCENES_JSON = Path("/gscratch/makelab/xia/datasets/capnav/test.json")
-OUTPUT_DIR = Path("/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results")
+OUTPUT_DIR = Path("/gscratch/makelab/xia/Qwen3-VL/capnav_qa_results_grpo8")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-LORA_PATH = Path("/gscratch/makelab/xia/Qwen3-VL/output/capnav-train-split-1epoch/checkpoint-656")
+LORA_PATH = Path("/gscratch/makelab/xia/Qwen3-VL/output/20260203_capnav-train-split-grpo-1epoch-groupsize8-speed-improve/checkpoint-10484")
 VIDEO_ROOT = Path("/gscratch/makelab/xia/datasets/capnav/videos")
 
 # Output files (global across ALL questions)

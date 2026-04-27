@@ -14,8 +14,8 @@ llm=Qwen/Qwen3-VL-8B-Instruct  # Using HuggingFace model ID
 
 # Training hyperparameters
 lr=2e-5
-batch_size=1
-grad_accum_steps=8
+batch_size=4
+grad_accum_steps=1
 
 # Training entry point
 entry_file=qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py
@@ -40,10 +40,7 @@ args="
     --model_name_or_path "${llm}" \
     --dataset_use ${datasets} \
     --data_flatten True \
-    --tune_mm_vision False \
-    --tune_mm_mlp True \
-    --tune_mm_llm True \
-    --bf16 \
+    --bf16 True\
     --output_dir ${output_dir} \
     --num_train_epochs 1 \
     --per_device_train_batch_size ${batch_size} \
@@ -61,18 +58,20 @@ args="
     --max_grad_norm 1 \
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
-    --model_max_length 8192 \
     --gradient_checkpointing False \
     --dataloader_num_workers 4 \
     --run_name ${run_name} \
     --video_fps 1 \
     --video_max_frames 64 \
     --video_min_frames 16 \
-    --lora_enable True \
     --lora_r 8 \
     --lora_alpha 16 \
     --lora_dropout 0.0 \
-    --report_to wandb"
+    --report_to wandb \
+    --max_completion_length 1024 \
+    --num_generations 4 \
+    --max_prompt_length 2048 \
+    --use_peft True"
 
 # Add LoRA checkpoint path if provided
 if [ -n "$lora_checkpoint" ]; then

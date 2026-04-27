@@ -1,0 +1,213 @@
+  0%|                                                                                                                                                                                                                                                                                                                                      | 0/5242 [00:00<?, ?it/s]Could not estimate the number of tokens of the input, floating-point operations will not be computed
+  0%|▋                                                                                                                                                                                                                                                                                                                         | 11/5242 [04:00<34:51:42, 23.99s/it]Traceback (most recent call last):
+{'loss': 0.2785, 'grad_norm': 1.156990712292729, 'learning_rate': 0.0, 'num_tokens': 14909.0, 'completions/mean_length': 26.90625, 'completions/min_length': 16.0, 'completions/max_length': 152.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 26.90625, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 152.0, 'rewards/capnav_reward/mean': 0.875, 'rewards/capnav_reward/std': 0.33601075410842896, 'reward': 0.875, 'reward_std': 0.33601075410842896, 'frac_reward_zero_std': 0.0, 'entropy': 0.15042848326265812, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 27.65264417277649, 'epoch': 0.0}
+{'loss': -0.0846, 'grad_norm': 1.2700340762168882, 'learning_rate': 1.2658227848101266e-07, 'num_tokens': 29459.0, 'completions/mean_length': 22.1875, 'completions/min_length': 12.0, 'completions/max_length': 27.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 22.1875, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 27.0, 'rewards/capnav_reward/mean': 0.875, 'rewards/capnav_reward/std': 0.30232077836990356, 'reward': 0.875, 'reward_std': 0.30232077836990356, 'frac_reward_zero_std': 0.0, 'entropy': 0.027294526807963848, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 11.46854580915533, 'epoch': 0.0}
+{'loss': 0.05, 'grad_norm': 0.8549262878018616, 'learning_rate': 2.5316455696202533e-07, 'num_tokens': 41835.0, 'completions/mean_length': 18.75, 'completions/min_length': 12.0, 'completions/max_length': 33.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.75, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 33.0, 'rewards/capnav_reward/mean': 0.9479166865348816, 'rewards/capnav_reward/std': 0.20927207171916962, 'reward': 0.9479166865348816, 'reward_std': 0.2092720866203308, 'frac_reward_zero_std': 0.0, 'entropy': 0.02219063974916935, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 10.890837714308873, 'epoch': 0.0}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 3.79746835443038e-07, 'num_tokens': 56819.0, 'completions/mean_length': 32.25, 'completions/min_length': 25.0, 'completions/max_length': 41.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 32.25, 'completions/min_terminated_length': 25.0, 'completions/max_terminated_length': 41.0, 'rewards/capnav_reward/mean': 0.8333333730697632, 'rewards/capnav_reward/std': 0.16933348774909973, 'reward': 0.8333333730697632, 'reward_std': 0.16933348774909973, 'frac_reward_zero_std': 1.0, 'entropy': 0.017935127019882202, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 12.541282325983047, 'epoch': 0.0}
+{'loss': 0.1054, 'grad_norm': 0.632375598173091, 'learning_rate': 5.063291139240507e-07, 'num_tokens': 72335.0, 'completions/mean_length': 35.875, 'completions/min_length': 31.0, 'completions/max_length': 80.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 35.875, 'completions/min_terminated_length': 31.0, 'completions/max_terminated_length': 80.0, 'rewards/capnav_reward/mean': 0.7708333730697632, 'rewards/capnav_reward/std': 0.2735338807106018, 'reward': 0.7708333730697632, 'reward_std': 0.2735338807106018, 'frac_reward_zero_std': 0.0, 'entropy': 0.05677129328250885, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 15.478295997949317, 'epoch': 0.0}
+{'loss': 0.5235, 'grad_norm': 1.2736343286894942, 'learning_rate': 6.329113924050634e-07, 'num_tokens': 85828.0, 'completions/mean_length': 24.15625, 'completions/min_length': 7.0, 'completions/max_length': 159.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 24.15625, 'completions/min_terminated_length': 7.0, 'completions/max_terminated_length': 159.0, 'rewards/capnav_reward/mean': 0.8645833730697632, 'rewards/capnav_reward/std': 0.3263722062110901, 'reward': 0.8645833730697632, 'reward_std': 0.3263722062110901, 'frac_reward_zero_std': 0.0, 'entropy': 0.2183668315410614, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 23.570082758087665, 'epoch': 0.0}
+{'loss': -0.1066, 'grad_norm': 0.9390376687778204, 'learning_rate': 7.59493670886076e-07, 'num_tokens': 100362.0, 'completions/mean_length': 36.6875, 'completions/min_length': 18.0, 'completions/max_length': 67.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 36.6875, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 67.0, 'rewards/capnav_reward/mean': 0.59375, 'rewards/capnav_reward/std': 0.27739670872688293, 'reward': 0.59375, 'reward_std': 0.27739667892456055, 'frac_reward_zero_std': 0.0, 'entropy': 0.06695089116692543, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 13.863339696079493, 'epoch': 0.0}
+[2026-02-03 18:27:50,677] [WARNING] [stage3.py:2274:step] 1 pytorch allocator cache flushes since last step. this happens when there is high memory pressure and is detrimental to performance. if this is happening frequently consider adjusting settings to reduce memory consumption. If you are unable to make the cache flushes go away consider adding get_accelerator().empty_cache() calls in your training loop to ensure that all ranks flush their caches at the same time
+{'loss': 0.3226, 'grad_norm': 0.72002906931421, 'learning_rate': 8.860759493670887e-07, 'num_tokens': 114794.0, 'completions/mean_length': 36.5, 'completions/min_length': 22.0, 'completions/max_length': 299.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 36.5, 'completions/min_terminated_length': 22.0, 'completions/max_terminated_length': 299.0, 'rewards/capnav_reward/mean': 0.7916666865348816, 'rewards/capnav_reward/std': 0.3465135991573334, 'reward': 0.7916666865348816, 'reward_std': 0.3465135991573334, 'frac_reward_zero_std': 0.0, 'entropy': 0.2114008292555809, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 35.43828157102689, 'epoch': 0.0}
+{'loss': -0.0294, 'grad_norm': 0.3938565056488865, 'learning_rate': 1.0126582278481013e-06, 'num_tokens': 127960.0, 'completions/mean_length': 27.9375, 'completions/min_length': 7.0, 'completions/max_length': 49.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 27.9375, 'completions/min_terminated_length': 7.0, 'completions/max_terminated_length': 49.0, 'rewards/capnav_reward/mean': 0.46875, 'rewards/capnav_reward/std': 0.507007360458374, 'reward': 0.46875, 'reward_std': 0.507007360458374, 'frac_reward_zero_std': 0.5, 'entropy': 0.04135054722428322, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 13.387051683850586, 'epoch': 0.0}
+{'loss': -0.023, 'grad_norm': 0.30437101175199266, 'learning_rate': 1.139240506329114e-06, 'num_tokens': 142607.0, 'completions/mean_length': 35.71875, 'completions/min_length': 13.0, 'completions/max_length': 236.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 35.71875, 'completions/min_terminated_length': 13.0, 'completions/max_terminated_length': 236.0, 'rewards/capnav_reward/mean': 0.46875, 'rewards/capnav_reward/std': 0.507007360458374, 'reward': 0.46875, 'reward_std': 0.507007360458374, 'frac_reward_zero_std': 0.5, 'entropy': 0.3606354594230652, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 30.729120759060606, 'epoch': 0.0}
+{'loss': -0.0743, 'grad_norm': 0.7687105587855418, 'learning_rate': 1.2658227848101267e-06, 'num_tokens': 155829.0, 'completions/mean_length': 24.1875, 'completions/min_length': 7.0, 'completions/max_length': 195.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 24.1875, 'completions/min_terminated_length': 7.0, 'completions/max_terminated_length': 195.0, 'rewards/capnav_reward/mean': 0.875, 'rewards/capnav_reward/std': 0.3023207485675812, 'reward': 0.875, 'reward_std': 0.30232077836990356, 'frac_reward_zero_std': 0.0, 'entropy': 0.15967577509582043, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'step_time': 25.418988902820274, 'epoch': 0.0}
+  File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 1041, in <module>
+    trainer.train()
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+    return inner_training_loop(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1160, in training_step
+    output = super().training_step(model, inputs, num_items_in_batch)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4020, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+    return func(self, *args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 2205, in compute_loss
+    return self._compute_loss(model, inputs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 2246, in _compute_loss
+    per_token_logps, entropies = self._get_per_token_logps_and_entropies(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+    return func(self, *args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1003, in _get_per_token_logps_and_entropies
+    logits = model(**model_inputs).logits
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2265, in forward
+    loss = self.module(*inputs, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/peft_model.py", line 1923, in forward
+    return self.base_model(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 311, in forward
+    return self.model.forward(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1344, in forward
+    outputs = self.model(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1223, in forward
+    outputs = self.language_model(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 850, in forward
+    layer_outputs = decoder_layer(
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 502, in forward
+    hidden_states, _ = self.self_attn(
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 428, in forward
+    query_states = self.q_norm(self.q_proj(hidden_states).view(hidden_shape)).transpose(1, 2)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+    return inner()
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+    result = forward_call(*args, **kwargs)
+  File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/tuners/lora/layer.py", line 807, in forward
+    result = result + lora_B(lora_A(dropout(x))) * scaling
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 79.25 GiB of which 22.31 MiB is free. Process 40525 has 492.00 MiB memory in use. Including non-PyTorch memory, this process has 78.73 GiB memory in use. Of the allocated memory 74.63 GiB is allocated by PyTorch, and 3.44 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/mmfs1/gscratch/makelab/xia/Qwen3-VL/qwen-vl-finetune/qwenvl/train/train_qwen_trl_grpo_capnav.py", line 1041, in <module>
+[rank0]:     trainer.train()
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2325, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 2674, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1160, in training_step
+[rank0]:     output = super().training_step(model, inputs, num_items_in_batch)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/trainer.py", line 4020, in training_step
+[rank0]:     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+[rank0]:     return func(self, *args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 2205, in compute_loss
+[rank0]:     return self._compute_loss(model, inputs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 2246, in _compute_loss
+[rank0]:     per_token_logps, entropies = self._get_per_token_logps_and_entropies(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/extras/profiling.py", line 199, in wrapper
+[rank0]:     return func(self, *args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1003, in _get_per_token_logps_and_entropies
+[rank0]:     logits = model(**model_inputs).logits
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 20, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2265, in forward
+[rank0]:     loss = self.module(*inputs, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/peft_model.py", line 1923, in forward
+[rank0]:     return self.base_model(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 311, in forward
+[rank0]:     return self.model.forward(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+[rank0]:     outputs = func(self, *args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1344, in forward
+[rank0]:     outputs = self.model(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+[rank0]:     outputs = func(self, *args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1223, in forward
+[rank0]:     outputs = self.language_model(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+[rank0]:     outputs = func(self, *args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 850, in forward
+[rank0]:     layer_outputs = decoder_layer(
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/modeling_layers.py", line 94, in __call__
+[rank0]:     return super().__call__(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 502, in forward
+[rank0]:     hidden_states, _ = self.self_attn(
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/mmfs1/home/xiasu/.local/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 428, in forward
+[rank0]:     query_states = self.q_norm(self.q_proj(hidden_states).view(hidden_shape)).transpose(1, 2)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1879, in _call_impl
+[rank0]:     return inner()
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1827, in inner
+[rank0]:     result = forward_call(*args, **kwargs)
+[rank0]:   File "/scr/anaconda3_xiasu/envs/general/lib/python3.10/site-packages/peft/tuners/lora/layer.py", line 807, in forward
+[rank0]:     result = result + lora_B(lora_A(dropout(x))) * scaling
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 82.00 MiB. GPU 0 has a total capacity of 79.25 GiB of which 22.31 MiB is free. Process 40525 has 492.00 MiB memory in use. Including non-PyTorch memory, this process has 78.73 GiB memory in use. Of the allocated memory 74.63 GiB is allocated by PyTorch, and 3.44 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
